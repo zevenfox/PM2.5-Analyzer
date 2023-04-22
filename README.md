@@ -7,6 +7,7 @@ To use PM2.5-Analyzer, you'll need to have Python 3.6 or later installed on your
 - pandas
 - matplotlib
 
+by
    ````
    pip install -r requirements.txt
    ````
