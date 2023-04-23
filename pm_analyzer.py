@@ -7,70 +7,70 @@ import matplotlib.pyplot as plt
 
 # Define the GUI
 class Application(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.master = master
-        self.master.title("Data Processing Application")
-        self.master.geometry("500x500")
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.parent = parent
+        self.parent.title("Data Processing Application")
+        self.parent.geometry("500x500")
         self.create_widgets()
 
 
     def create_widgets(self):
-        self.label_output = tk.Label(self.master, text="")
+        self.label_output = tk.Label(self.parent, text="")
         self.label_output.pack()
         # Create the browse button
-        self.choose_file_label = tk.Label(self.master, text="Choose a CSV file from your computer")
+        self.choose_file_label = tk.Label(self.parent, text="Choose a CSV file from your computer")
         self.choose_file_label.pack()
-        self.browse_button = tk.Button(self.master, text="Choose File", command=self.browse_file)
+        self.browse_button = tk.Button(self.parent, text="Choose File", command=self.browse_file)
         self.browse_button.pack()
         # Create the input widgets
-        self.label_year = tk.Label(self.master, text="Choose year:")
+        self.label_year = tk.Label(self.parent, text="Choose year:")
         self.label_year.pack()
-        self.var_year = tk.StringVar(self.master)
+        self.var_year = tk.StringVar(self.parent)
         self.var_year.set("2010")
-        self.option_year = tk.OptionMenu(self.master, self.var_year, "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017")
+        self.option_year = tk.OptionMenu(self.parent, self.var_year, "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017")
         self.option_year.pack()
 
-        self.label_output = tk.Label(self.master, text="")
+        self.label_output = tk.Label(self.parent, text="")
         self.label_output.pack()
 
         # Create the plot type radio buttons
-        self.label_plot_type = tk.Label(self.master, text="Choose plot type:")
+        self.label_plot_type = tk.Label(self.parent, text="Choose plot type:")
         self.label_plot_type.pack()
-        self.var_plot_type = tk.StringVar(self.master)
+        self.var_plot_type = tk.StringVar(self.parent)
         self.var_plot_type.set("Histogram")
-        self.radio_histogram = tk.Radiobutton(self.master, text="Histogram", variable=self.var_plot_type, value="Histogram")
+        self.radio_histogram = tk.Radiobutton(self.parent, text="Histogram", variable=self.var_plot_type, value="Histogram")
         self.radio_histogram.pack()
-        self.radio_everyday = tk.Radiobutton(self.master, text="Everyday graph", variable=self.var_plot_type, value="Everyday")
+        self.radio_everyday = tk.Radiobutton(self.parent, text="Everyday graph", variable=self.var_plot_type, value="Everyday")
         self.radio_everyday.pack()
 
         # Create the processing button
-        self.button_process = tk.Button(self.master, text="Plot Graph", command=self.process_data)
+        self.button_process = tk.Button(self.parent, text="Plot Graph", command=self.process_data)
         self.button_process.pack()
 
-        self.label_outline = tk.Label(self.master, text="")
+        self.label_outline = tk.Label(self.parent, text="")
         self.label_outline.pack()
 
-        self.avg_pm25_label = tk.Label(self.master, text="Average PM2.5: ")
-        self.avg_pm25_label = tk.Label(self.master, text="Average PM2.5: ")
+        self.avg_pm25_label = tk.Label(self.parent, text="Average PM2.5: ")
+        self.avg_pm25_label = tk.Label(self.parent, text="Average PM2.5: ")
         self.avg_pm25_label.pack()
-        self.max_pm25_label = tk.Label(self.master, text="Maximum PM2.5: ")
+        self.max_pm25_label = tk.Label(self.parent, text="Maximum PM2.5: ")
         self.max_pm25_label.pack()
-        self.min_pm25_label = tk.Label(self.master, text="Minimum PM2.5: ")
+        self.min_pm25_label = tk.Label(self.parent, text="Minimum PM2.5: ")
         self.min_pm25_label.pack()
-        self.std_pm25_label = tk.Label(self.master, text="Standard Deviation PM2.5: ")
+        self.std_pm25_label = tk.Label(self.parent, text="Standard Deviation PM2.5: ")
         self.std_pm25_label.pack()
-        self.var_pm25_label = tk.Label(self.master, text="Variance PM2.5: ")
+        self.var_pm25_label = tk.Label(self.parent, text="Variance PM2.5: ")
         self.var_pm25_label.pack()
 
-        self.analyze_button = tk.Button(self.master, text="Analyze", command=self.analyze_data, state=tk.DISABLED)
+        self.analyze_button = tk.Button(self.parent, text="Analyze", command=self.analyze_data, state=tk.DISABLED)
         self.analyze_button.pack()
 
         # Create the output widgets
-        self.label_output = tk.Label(self.master, text="")
+        self.label_output = tk.Label(self.parent, text="")
         self.label_output.pack()
 
-        self.button_quit = tk.Button(self.master, text="Quit", command=root.destroy)
+        self.button_quit = tk.Button(self.parent, text="Quit", command=root.destroy)
         self.button_quit.pack()
 
     def browse_file(self):
@@ -124,5 +124,5 @@ class Application(tk.Frame):
 
 # Run the GUI
 root = tk.Tk()
-app = Application(master=root)
+app = Application(parent=root)
 app.mainloop()
